@@ -1,0 +1,15 @@
+{% extends "template.html" %}
+{% set active_page = "diagnose" %}
+{% block content %}
+<div class="container shadow rounded fadeIn p-5 my-5" id="content" style="background-color: #E6DFE1;">
+    <h1 style='text-align:center'>Medical Examination Result</h1>
+    <h3 style="text-align: center; font-weight: 200;">Diagnosis based on Medical Examination</h3>
+    <br><br>
+    <div class="container">
+        <p>The predicted outcome is: {{ prediction }}</p>
+        <form action="{{ url_for('home') }}" method="get">
+            <<input type="submit" value="Go to Home" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+{% endblock %}

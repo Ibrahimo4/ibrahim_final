@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Diabetes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('predict') }}">Predict</a>
+    </nav>
+    <div class="container">
+        <h1>Predict Diabetes</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('predict') }}">
+            <label for="age">Age</label>
+            <input type="number" name="age" id="age" required>
+            
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender" required>
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+            </select>
+            
+            <label for="polyuria">Polyuria</label>
+            <select name="polyuria" id="polyuria" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="polydipsia">Polydipsia</label>
+            <select name="polydipsia" id="polydipsia" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="sudden_weight_loss">Sudden Weight Loss</label>
+            <select name="sudden_weight_loss" id="sudden_weight_loss" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="weakness">Weakness</label>
+            <select name="weakness" id="weakness" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="polyphagia">Polyphagia</label>
+            <select name="polyphagia" id="polyphagia" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="visual_blurring">Visual Blurring</label>
+            <select name="visual_blurring" id="visual_blurring" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="itching">Itching</label>
+            <select name="itching" id="itching" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="irritability">Irritability</label>
+            <select name="irritability" id="irritability" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="delayed_healing">Delayed Healing</label>
+            <select name="delayed_healing" id="delayed_healing" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="partial_paresis">Partial Paresis</label>
+            <select name="partial_paresis" id="partial_paresis" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="muscle_stiffness">Muscle Stiffness</label>
+            <select name="muscle_stiffness" id="muscle_stiffness" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="alopecia">Alopecia</label>
+            <select name="alopecia" id="alopecia" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="obesity">Obesity</label>
+            <select name="obesity" id="obesity" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <button type="submit">Check</button>
+        </form>
+    </div>
+</body>
+</html>

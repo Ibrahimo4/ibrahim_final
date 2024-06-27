@@ -1,0 +1,16 @@
+{% extends "template.html" %}
+{% set active_page = "diagnose" %}
+{% block content %}
+<div class="container shadow rounded fadeIn p-5 my-5" id="content" style="background-color: #E6DFE1;">
+    <h1 style='text-align:center'>Symptom-Based Diagnosis Result</h1>
+    <h3 style="text-align: center; font-weight: 200;">Diagnosis based on Provided Symptoms</h3>
+    <br><br>
+    <div class="container">
+        <p>The predicted outcome is: {{ prediction }}</p>
+        <p>Prediction confidence: {{ accuracy }}%</p>
+        <form action="{{ url_for('medical_exam') }}" method="get">
+            <input type="submit" value="Proceed to Medical Examination" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+{% endblock %}

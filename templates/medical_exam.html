@@ -1,0 +1,61 @@
+{% extends "template.html" %}
+{% set active_page = "diagnose" %}
+{% block content %}
+<div class="container shadow rounded fadeIn p-5 my-5" id="content" style="background-color: #E6DFE1;">
+    <h1 style='text-align:center'>Medical Examination</h1>
+    <h3 style="text-align: center; font-weight: 200;">Provide your medical test results</h3>
+    <br><br>
+    <div class="container">
+        <form action="{{ url_for('medical_exam') }}" method="post">
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="form-group col-md-6">
+                    {{ form.Pregnancies.label(class_="control-label") }}
+                    {{ form.Pregnancies(class_="form-control", placeholder="Enter number of Pregnancies") }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.Glucose.label(class_="control-label") }}
+                    {{ form.Glucose(class_="form-control", placeholder="Enter Glucose level") }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    {{ form.BloodPressure.label(class_="control-label") }}
+                    {{ form.BloodPressure(class_="form-control", placeholder="Enter Blood Pressure") }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.SkinThickness.label(class_="control-label") }}
+                    {{ form.SkinThickness(class_="form-control", placeholder="Enter Skin Thickness") }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    {{ form.Insulin.label(class_="control-label") }}
+                    {{ form.Insulin(class_="form-control", placeholder="Enter Insulin level") }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.BMI.label(class_="control-label") }}
+                    {{ form.BMI(class_="form-control", placeholder="Enter BMI") }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    {{ form.DiabetesPedigreeFunction.label(class_="control-label") }}
+                    {{ form.DiabetesPedigreeFunction(class_="form-control", placeholder="Enter Diabetes Pedigree Function") }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.Age.label(class_="control-label") }}
+                    {{ form.Age(class_="form-control", placeholder="Enter Age") }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="my-4 col-6">
+                    {{ form.submit(class_="btn-primary form-control") }}
+                </div>
+                <div class="col"></div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
