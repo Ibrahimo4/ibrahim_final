@@ -1,0 +1,66 @@
+{% extends "template.html" %}
+{% set active_page = "diagnose" %}
+{% block content %}
+<div class="container shadow rounded fadeIn p-5 my-5" id="content" style="background-color: #E6DFE1;">
+    <h1 style='text-align:center'>Diabetes Status Diagnosis </h1>
+    <h3 style="text-align: center;font-weight: 200;">Courtesy of Cloud Pak for Data with watson<span style="color: blue;font-weight: 400;">x</span>.ai</h3>
+    <br>
+    <br>
+    <div class="container">
+        <form action="{{ url_for('medical_diagnosis') }}" id="diagnosis-form" method="post">
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="form-check mb-4 col-md-1"></div>
+                <div class="form-check mb-4 col-md-4">
+                    {{ form.age.label(class_="form-check-label") }}
+                    {{ form.age(class_="form-control", placeholder="Enter Your Age") }}
+                </div>
+                <div class="form-check mb-4 col-md-3"></div>
+            </div>
+            <p>Please select if you have any of the following health conditions:</p><br>
+            <div class="row">
+                <div class="form-check mb-4 col-md-3">
+                    {{ form.pregnancies.label(class_="form-check-label") }}
+                    {{ form.pregnancies(class_="form-control") }}
+                </div>
+                <div class="form-check mb-4 col-md-3">
+                    {{ form.glucose.label(class_="form-check-label") }}
+                    {{ form.glucose(class_="form-control") }}
+                </div>
+                <div class="form-check mb-4 col-md-3">
+                    {{ form.blood_pressure.label(class_="form-check-label") }}
+                    {{ form.blood_pressure(class_="form-control") }}
+                </div>
+                <div class="form-check mb-4 col-md-3">
+                    {{ form.skin_thickness.label(class_="form-check-label") }}
+                    {{ form.skin_thickness(class_="form-control") }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-check mb-4 col-md-3">
+                    {{ form.insulin.label(class_="form-check-label") }}
+                    {{ form.insulin(class_="form-control") }}
+                </div>
+                <div class="form-check mb-4 col-md-3">
+                    {{ form.bmi.label(class_="form-check-label") }}
+                    {{ form.bmi(class_="form-control") }}
+                </div>
+                <div class="form-check mb-4 col-md-3">
+                    {{ form.diabetes_pedigree_function.label(class_="form-check-label") }}
+                    {{ form.diabetes_pedigree_function(class_="form-control") }}
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="my-4 col-6">
+                    {{ form.submit(class_="btn-primary form-control") }}
+                </div>
+                <div class="col"></div>
+            </div>
+        </form>
+        <br>
+        <div class="alert alert-secondary shadow" id="diagnosis-result" role="alert" style="border: 2px solid black;"></div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "template.html" %}
+{% set active_page = "diagnose" %}
+{% block content %}
+<div class="container shadow rounded fadeIn p-5 my-5" id="content" style="background-color: #E6DFE1;">
+    <h1 style='text-align:center'>Diabetes Status Diagnosis Result from test Number 2</h1>
+    <h3 style="text-align: center;font-weight: 200;">Courtesy of Cloud Pak for Data with watson<span style="color: blue;font-weight: 400;">x</span>.ai</h3>
+    <br>
+    <br>
+    <div class="container">
+        <div class="alert alert-secondary shadow" role="alert" style="border: 2px solid black;">
+            <h4 class="alert-heading" style="text-align:center">Diagnosis Result Test Number 2</h4>
+              <p style="text-align:center; font-size:1.2em; color: {{ 'red' if prediction == 'Positive' else 'green' }};">
+               
+                Prediction: <strong>{{ prediction }}</strong>
+            </p>
+              <p style="text-align:center; font-size:1.2em; color: {{ 'red' if prediction == 'Positive' else 'green' }};">
+               
+                Accuracy: <strong>{{ accuracy }}%</strong>
+            </p>
+<hr>
+            <p class="mb-0" style="text-align:center; color: {{ 'red' if prediction == 'Positive' else 'green' }};">
+                {{ 'Please  Visit the nearest hospital.' if prediction == 'Positive' else 'You are healthy. Maintain your healthy lifestyle.' }}
+            </p>
+            <hr>
+              <p style="text-align:center; font-size:1.2em; color: {{ 'red' if prediction == 'Positive' else 'green' }};">
+               
+                Please consult with your healthcare provider for further guidance.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="my-4 col-6">
+                <a href="{{ url_for('medical_exam2') }}" class="btn-primary form-control">Go To Final Test</a>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

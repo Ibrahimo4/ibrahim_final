@@ -1,0 +1,94 @@
+# generate_report.py
+
+import pandas as pd
+from ydata_integration import get_data_and_metadata
+
+def generate_html_report():
+    dataset, metadata = get_data_and_metadata()
+    
+    report_html = f"""
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Data Report</title>
+        <style>
+            body {{ font-family: Arial, sans-serif; }}
+            .container {{ max-width: 800px; margin: 0 auto; padding: 20px; }}
+            h1, h2, h3 {{ color: #333; }}
+            .section {{ margin-bottom: 20px; }}
+            .table-container {{ overflow-x: auto; }}
+            table {{ width: 100%; border-collapse: collapse; margin-bottom: 20px; }}
+            th, td {{ border: 1px solid #ddd; padding: 8px; text-align: left; }}
+            th {{ background-color: #f2f2f2; }}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Data Report</h1>
+            
+            <div class="section">
+                <h2>Overview</h2>
+                <p>Number of variables: {metadata['num_variables']}</p>
+                <p>Number of observations: {metadata['num_observations']}</p>
+                <p>Missing cells: {metadata['missing_cells']}</p>
+                <p>Missing cells (%): {metadata['missing_cells_percentage']}</p>
+                <p>Duplicate rows: {metadata['duplicate_rows']}</p>
+                <p>Duplicate rows (%): {metadata['duplicate_rows_percentage']}</p>
+                <p>Total size in memory: {metadata['total_size_memory']}</p>
+                <p>Average record size in memory: {metadata['avg_record_size_memory']}</p>
+            </div>
+            
+            <div class="section">
+                <h2>Variable Types</h2>
+                <p>Numeric: {metadata['num_numeric']}</p>
+                <p>Categorical: {metadata['num_categorical']}</p>
+                <p>Boolean: {metadata['num_boolean']}</p>
+            </div>
+
+            <div class="section table-container">
+                <h2>Variables</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Type</th>
+                            <th>Distinct</th>
+                            <th>Missing</th>
+                            <th>Memory size</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+    """
+    
+    for variable in metadata['variables']:
+        report_html += f"""
+                        <tr>
+                            <td>{variable['name']}</td>
+                            <td>{variable['type']}</td>
+                            <td>{variable['distinct']}</td>
+                            <td>{variable['missing']}</td>
+                            <td>{variable['memory_size']}</td>
+                        </tr>
+        """
+
+    report_html += """
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2>Sample Data</h2>
+                {dataset.head().to_html(classes='data')}
+            </div>
+        </div>
+    </body>
+    </html>
+    """
+
+    with open('app/static/generated_report.html', 'w') as f:
+        f.write(report_html)
+
+if __name__ == "__main__":
+    generate_html_report()

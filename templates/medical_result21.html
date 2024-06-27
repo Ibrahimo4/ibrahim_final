@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medical Diagnosis Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Medical Diagnosis Result</h1>
+    <p>Prediction: {{ prediction }}</p>
+    <p>Accuracy: {{ accuracy }}%</p>
+</body>
+</html>

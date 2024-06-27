@@ -1,0 +1,65 @@
+{% extends "template.html" %}
+{% set active_page = "diagnose" %}
+{% block content %}
+<div class="container shadow rounded fadeIn p-5 my-5" id="content" style="background-color: #E6DFE1;">
+    <h1 style='text-align:center'>Diabetes Status Diagnosis</h1>
+    <h3 style="text-align: center; font-weight: 200;">Courtesy of Cloud Pak for Data with watson<span style="color: blue; font-weight: 400;">x</span>.ai</h3>
+    <br><br>
+    <div class="container">
+        <h1 class="mt-5">Medical Exam Form</h1>
+        <form method="POST" action="{{ url_for('medical_diagnosis2') }}" id="diagnosis-form">
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="form-group col-md-4">
+                    {{ form.gender.label }}<br>
+                    {{ form.gender(class="form-control") }}
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    {{ form.age.label }}<br>
+                    {{ form.age(class="form-control") }}
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="form-group form-check col-md-3">
+                    {{ form.hypertension() }}
+                    {{ form.hypertension.label(class="form-check-label") }}
+                </div>
+                <div class="form-group form-check col-md-3">
+                    {{ form.heart_disease() }}
+                    {{ form.heart_disease.label(class="form-check-label") }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    {{ form.smoking_history.label }}<br>
+                    {{ form.smoking_history(class="form-control") }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    {{ form.bmi.label }}<br>
+                    {{ form.bmi(class="form-control") }}
+                </div>
+                <div class="form-group col-md-3">
+                    {{ form.HbA1c_level.label }}<br>
+                    {{ form.HbA1c_level(class="form-control") }}
+                </div>
+                <div class="form-group col-md-3">
+                    {{ form.blood_glucose_level.label }}<br>
+                    {{ form.blood_glucose_level(class="form-control") }}
+                </div>
+                <div class="form-group col-md-3">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </div>
+        </form>
+        <br>
+        <div class="alert alert-secondary shadow" id="diagnosis-result" role="alert" style="border: 2px solid black;"></div>
+    </div>
+</div>
+{% endblock %}

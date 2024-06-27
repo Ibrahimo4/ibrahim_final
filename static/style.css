@@ -1,0 +1,170 @@
+body {
+  background-color: #2E4057; /* A soft, deep blue */
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+#homepage {
+  background-color: #F0F4F8; /* A light, airy blue-grey */
+}
+
+.container-fluid {
+  padding-left: 0!important;
+  padding-right: 0!important;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #3A799D; /* A calming teal */
+  border-color: #3A799D;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #57A0D3; /* A lighter, more vibrant teal */
+  border-color: #57A0D3;
+}
+
+h2 {
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+  padding-top: 0.5rem;
+  line-height: 1;
+}
+
+.mb-4 {
+  background-color: #E0F0E9; /* A very light mint green */
+}
+
+.mt-4 {
+  margin-top: 0.25rem !important;
+}
+
+#homepagebackground {
+  background: url(ai-banner.png);
+  background-color: #2E4057;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #2E4057 !important;
+}
+
+@media only screen and (max-width: 600px) {
+  #homepagebackground {
+    background-size: 200% auto;
+  }
+}
+
+.navbar {
+  background-color: #1A1A1A; /* A slightly softer black */
+}
+
+#content {
+  max-width: 1080px;
+}
+
+.scrollme {
+  overflow-x: auto;
+}
+
+.fa-4x {
+  font-size: 4em;
+  color: #3A799D;
+}
+
+/* hide result div initially, required for fade effects */
+.btn-secondary {
+  color: #fff;
+  background-color: #2E4057;
+  border-color: #2E4057;
+}
+
+#diagnosis-result {
+  display: none;
+}
+
+/* page load animations */
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInUp.first {
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+.fadeInUp.second {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  opacity: 0;
+  -webkit-animation: fadeIn ease-in 1s;
+  -moz-animation: fadeIn ease-in 1s;
+  animation: fadeIn ease-in 1s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 1ss;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
+}
